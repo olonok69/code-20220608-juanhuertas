@@ -1,7 +1,7 @@
 # code-20220608-juanhuertas
 Python BMI Calculator Offline Coding Challenge V7
 
-** Problem Statement** 
+**Problem Statement** 
 
 Given the following JSON data
 [{"Gender": "Male", "HeightCm": 171, "WeightKg": 96 },
