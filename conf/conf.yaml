@@ -1,0 +1,4 @@
+---
+input_folder : "input"
+conf_bmi : "conf/bmi.json"
+output_folder : "output"
