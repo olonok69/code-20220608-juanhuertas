@@ -81,8 +81,8 @@ simultaneous process, each transforming a chunk. n here as well is the number of
 output a file per input file
 - if we have cloud resources available other solutions like Databricks can be use as well as part of the ingestion pipeline
 
-The method which calculate the numbers of "Overweight", is a generic method which return you just exact matches with that 
-label and I am not doing any king of grouping or assumption like "Moderate obese" is overweight or not. 
+The method which calculate the numbers of "Overweight", is a generic method which return you just exact matches to the label 
+you send to the method, not doing any king of grouping or assumption like "Moderate obese" is overweight or not. 
 
 
 
