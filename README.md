@@ -44,3 +44,43 @@ weight, you can calculate your BMI as follows: 75kg / (1.75m²) = 24.49kg/m²
 **Program skeleton**
 
 
+![img.png](images/img.png)
+
+- The entry point script is main.py which expect to receive a mandatory parameter "conf_file" whit the path of the 
+configuration yaml file Ex: python .\main.py --conf_file ./conf/conf.yaml
+- conf folder: contains the configuration yaml file and bmi categories, bmi ranges and health risk categories in two 
+formats json and csv. We use json in this version
+- images: just contains the images illustrating this Readme.md file
+- input folder: contains the input json file/s
+- src folder: contains python scripts with support methods and functions use in main
+- test folder: contains unittest scripts
+
+**conf.yaml file**
+![img.png](images/img2.png)
+Just contains keys to identify input data folder, output data folder and the bmi configuration file
+The application expect to read file/s from folder in key input_folder and it will produce an output in json on folder 
+configured in key output_folder. The Application it will iterate through all the json files in input folder
+
+**Test**
+Tests are design to be run either inside a conventional IDE or as part of a CI/CD pipeline using standard notation
+
+ex: VScode
+
+![img.png](images/imgt.png)
+
+**Additional comments**
+To scalate this solution to million clients we can follow different approaches, depending how we ingest the input data
+assuming that my input is a folder on a data lake where we receive individual json files containing multiples samples each,
+we can:
+- Read all of them and feed a single dataframe, them use a technology like Dask to apply the transformations to n chunks
+of this dataframe, where n is the number or cpu,s available. Output a single file
+- Read all the file paths into a list, divide the list in n chunks ,use multiprocessing library and send to n 
+simultaneous process, each transforming a chunk. n here as well is the number of cpu of your server/computer and we 
+output a file per input file
+- if we have cloud resources available other solutions like Databricks can be use as well as part of the ingestion pipeline
+
+The method which calculate the numbers of "Overweight", is a generic method which return you just exact matches with that 
+label and I am not doing any king of grouping or assumption like "Moderate obese" is overweight or not. 
+
+
+
