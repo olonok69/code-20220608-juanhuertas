@@ -34,7 +34,7 @@ class Test_utils_bmi(unittest.TestCase):
         height = 75 # kg
 
         assert  float(weight)/ ((float(height) /100) ** 2 ) ==  calculate_bmi(weight, height)
-        
+
     def test_calculate_bmi_row(self):
         data_test['BMI']= data_test.apply(lambda row: calculate_bmi_row(row), axis=1)
         pd.testing.assert_frame_equal(data_test[['BMI']], data_validation[['BMI']])
@@ -44,3 +44,12 @@ class Test_utils_bmi(unittest.TestCase):
         data_test['BMI']= data_test.apply(lambda row: calculate_bmi_row(row), axis=1)
         data_test[['BMI_Category', 'Health_risk']] = data_test.apply(lambda row: bmi_cat_health_risk(row, d), axis=1, result_type="expand")
         pd.testing.assert_frame_equal(data_test[['BMI_Category', 'Health_risk']], data_validation[['BMI_Category', 'Health_risk']])
+
+    def test_count_label(self):
+        assert count_label(data_validation, "Moderately obese") == 1
+        assert count_label(data_validation, "Severely obese") == 1
+        assert count_label(data_validation, "Underweight") == 1
+        assert count_label(data_validation, "Normal weight") == 1
+        assert count_label(data_validation, "Moderately obese") == 1
+        assert count_label(data_validation, "Overweight") == 1
+        assert count_label(data_validation, "Moderately not obese") == 0

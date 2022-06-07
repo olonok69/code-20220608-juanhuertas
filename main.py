@@ -10,7 +10,7 @@ import os
 def main():
     # read cmd arguments
     parser = argparse.ArgumentParser("BMI Calculator")
-    parser.add_argument("--conf_file", type=str, help="configuration file" ,required=True)
+    parser.add_argument("--conf_file", type=str, help="configuration file" , required=True)
     args = parser.parse_args()
 
     # read yaml configuration file
@@ -54,6 +54,7 @@ def main():
         data[['BMI_Category', 'Health_risk']] = data.apply(lambda row: bmi_cat_health_risk(row, d), axis=1, result_type="expand")
         # serialize to dataframe to json to output directory
         data.to_json(output_path + f"/{file_name}_output.json", orient='records')
+        print(count_label(data, "Overweight"))
 
 
 if __name__ == '__main__':
