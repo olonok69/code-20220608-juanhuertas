@@ -56,7 +56,9 @@ formats json and csv. We use json in this version
 - test folder: contains unittest scripts
 
 **conf.yaml file**
+
 ![img.png](images/img2.png)
+
 Just contains keys to identify input data folder, output data folder and the bmi configuration file
 The application expect to read file/s from folder in key input_folder and it will produce an output in json on folder 
 configured in key output_folder. The Application it will iterate through all the json files in input folder
